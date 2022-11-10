@@ -63,11 +63,11 @@ __config_proxy() {
 	echo "ZSH Proxy Plugin Config"
 	echo "----------------------------------------"
 
-	echo -n "[socks5 proxy] {Default as 127.0.0.1:1080}
+	echo -n "[socks5 proxy] {Default as 127.0.0.1:7890}
 (address:port): "
 	read -r __read_socks5
 
-	echo -n "[http proxy]   {Default as 127.0.0.1:8080}
+	echo -n "[http proxy]   {Default as 127.0.0.1:7890}
 (address:port): "
 	read -r __read_http
 
@@ -75,22 +75,22 @@ __config_proxy() {
 (comma separate domains): "
 	read -r __read_no_proxy
 
-	echo -n "[git proxy type] {Default as socks5}
+	echo -n "[git proxy type] {Default as http}
 (socks5 or http): "
 	read -r __read_git_proxy_type
 	echo "========================================"
 
 	if [ -z "${__read_socks5}" ]; then
-		__read_socks5="127.0.0.1:1080"
+		__read_socks5="127.0.0.1:7890"
 	fi
 	if [ -z "${__read_http}" ]; then
-		__read_http="127.0.0.1:8080"
+		__read_http="127.0.0.1:7890"
 	fi
 	if [ -z "${__read_no_proxy}" ]; then
 		__read_no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
 	fi
 	if [ -z "${__read_git_proxy_type}" ]; then
-		__read_git_proxy_type="socks5"
+		__read_git_proxy_type="http"
 	fi
 
 	echo "http://${__read_http}" >"${ZDOTDIR:-${HOME}}/.zsh-proxy/http"
