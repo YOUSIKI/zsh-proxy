@@ -21,10 +21,7 @@ __read_proxy_config() {
 
 __check_whether_init() {
 	if [ ! -f "${ZDOTDIR:-${HOME}}/.zsh-proxy/status" ] || [ ! -f "${ZDOTDIR:-${HOME}}/.zsh-proxy/http" ] || [ ! -f "${ZDOTDIR:-${HOME}}/.zsh-proxy/socks5" ] || [ ! -f "${ZDOTDIR:-${HOME}}/.zsh-proxy/no_proxy" ]; then
-		echo "----------------------------------------"
-		echo "You should run following command first:"
-		echo "$ init_proxy"
-		echo "----------------------------------------"
+		init_proxy
 	else
 		__read_proxy_config
 	fi
@@ -285,21 +282,6 @@ init_proxy() {
 	touch "${ZDOTDIR:-${HOME}}/.zsh-proxy/socks5"
 	touch "${ZDOTDIR:-${HOME}}/.zsh-proxy/no_proxy"
 	touch "${ZDOTDIR:-${HOME}}/.zsh-proxy/git_proxy_type"
-	echo "----------------------------------------"
-	echo "Great! The zsh-proxy is initialized"
-	echo ""
-	echo -E '  ______ _____ _    _   _____  '
-	echo -E ' |___  // ____| |  | | |  __ \ '
-	echo -E '    / /| (___ | |__| | | |__| ) __ _____  ___   _ '
-	echo -E "   / /  \___ \|  __  | |  ___/ '__/ _ \ \/ | | | |"
-	echo -E '  / /__ ____) | |  | | | |   | | | (_) >  <| |_| |'
-	echo -E ' /_____|_____/|_|  |_| |_|   |_|  \___/_/\_\\__, |'
-	echo -E '                                             __/ |'
-	echo -E '                                            |___/ '
-	echo "----------------------------------------"
-	echo "Now you might want to run following command:"
-	echo "$ config_proxy"
-	echo "----------------------------------------"
 }
 
 config_proxy() {
